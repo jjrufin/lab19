@@ -1,10 +1,20 @@
-var http = require('http');
-var facts = require('./facts');
+var express = require('express');
+var app = express();
+var play = ['video games ', 'basketball ', 'hopscotch ', 'hide and seek ', 'tag ', 'twister '];
+var eat = ['tacos', 'shake shack', 'krispy kreme'];
 
 
-http.createServer(function(request,response){
-  response.writeHead(200, {'Content-type': 'text/plain'});
-  response.write(facts.iLikeTo[0]+ facts.play[Math.floor(Math.random()*facts.play.length)]);
-  response.write(facts.eat[Math.floor(Math.random()*facts.eat.length)]);
-  response.end();
-}).listen(8080);
+// respond with "Hello World!" on the homepage
+app.get('/', function (req, res) {
+  res.send((eat[Math.floor(Math.random()*eat.length)]));
+});
+
+app.get('/play', function (req, res) {
+  res.send(play);
+});
+
+
+var server = app.listen(3000, function () {
+var port = server.address().port;
+console.log('Example app listening at http://localhost:%s', port);
+});
