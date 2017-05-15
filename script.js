@@ -1,16 +1,17 @@
 var express = require('express');
 var app = express();
-var play = ['video games ', 'basketball ', 'hopscotch ', 'hide and seek ', 'tag ', 'twister '];
-var eat = ['tacos', 'shake shack', 'krispy kreme'];
+var facts = require('./facts')
+// var play = ['video games ', 'basketball ', 'hopscotch ', 'hide and seek ', 'tag ', 'twister '];
+// var eat = ['tacos', 'shake shack', 'krispy kreme'];
 
 
 // respond with "Hello World!" on the homepage
 app.get('/', function (req, res) {
-  res.send((eat[Math.floor(Math.random()*eat.length)]));
+  res.send((facts.eat[Math.floor(Math.random()*facts.eat.length)]));
 });
 
 app.get('/play', function (req, res) {
-  res.send(play);
+  res.send(facts.play);
 });
 
 
