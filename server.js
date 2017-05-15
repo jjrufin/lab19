@@ -8,7 +8,9 @@ var facts = require('./facts')
 // respond with "Hello World!" on the homepage
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function (req, res) {
+
+
+app.get('/api/facts', function (req, res) {
   res.send((facts.eat[Math.floor(Math.random()*facts.eat.length)]));
 });
 
